@@ -9,3 +9,7 @@ class Processo:
 
     def __str__(self):
         return f"ID[{self.id}]-{self.nome}(P{self.prioridade}, {self.ciclos_necessarios} ciclos)"
+    class No:
+    def __init__(self, processo: Processo):
+        self.processo = processo
+        self.proximo = None
