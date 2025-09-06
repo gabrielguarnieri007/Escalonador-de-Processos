@@ -13,3 +13,10 @@ class Processo:
     def __init__(self, processo: Processo):
         self.processo = processo
         self.proximo = None
+        class ListaDeProcessos:
+    def __init__(self):
+        self.inicio = None
+        self.fim = None
+
+    def esta_vazia(self) -> bool:
+        return self.inicio is None
