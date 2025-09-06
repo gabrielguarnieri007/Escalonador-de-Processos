@@ -29,3 +29,14 @@ class Processo:
         else:
             self.fim.proximo = novo_no
             self.fim = novo_no
+            # Adicionar este método dentro da classe ListaDeProcessos
+    def remover_do_inicio(self) -> Processo:
+        if self.esta_vazia():
+            return None
+        processo_removido = self.inicio.processo
+        if self.inicio == self.fim:
+            self.inicio = None
+            self.fim = None
+        else:
+            self.inicio = self.inicio.proximo
+        return processo_removido
