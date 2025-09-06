@@ -20,3 +20,12 @@ class Processo:
 
     def esta_vazia(self) -> bool:
         return self.inicio is None
+    # Adicionar este método dentro da classe ListaDeProcessos
+    def adicionar_no_final(self, processo: Processo):
+        novo_no = No(processo)
+        if self.esta_vazia():
+            self.inicio = novo_no
+            self.fim = novo_no
+        else:
+            self.fim.proximo = novo_no
+            self.fim = novo_no
