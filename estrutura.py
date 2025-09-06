@@ -42,14 +42,15 @@ class Processo:
         return processo_removido
         # Adicionar este método dentro da classe ListaDeProcessos
     def __str__(self) -> str:
-    if self.esta_vazia():
+        if self.esta_vazia():
         return "[]"
-     string_final = "["
-     no_atual = self.inicio
-     while no_atual is not None:
+       string_final = "["
+       no_atual = self.inicio
+       while no_atual is not None:
         string_final += str(no_atual.processo)
         if no_atual.proximo is not None:
             string_final += ", "
         no_atual = no_atual.proximo
-     string_final += "]"
+      string_final += "]"
      return string_final
+ .
