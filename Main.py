@@ -23,3 +23,19 @@ def carregar_processos_de_arquivo(nome_arquivo: str) -> list[Processo]:
     except FileNotFoundError:
         return None
     return processos
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Uso: python Main.py <nome_do_arquivo_de_processos>")
+        sys.exit(1)
+
+    nome_arquivo = sys.argv[1]
+    lista_inicial_processos = carregar_processos_de_arquivo(nome_arquivo)
+
+    if lista_inicial_processos:
+        meu_escalonador = Scheduler()
+        for p in lista_inicial_processos:
+            meu_escalonador.adicionar_processo(p)
+        
+        print("--- ESTADO INICIAL ---")
+        # Este método será criado no próximo commit
+        meu_escalonador.imprimir_estado_geral()
