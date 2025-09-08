@@ -31,11 +31,25 @@ if __name__ == "__main__":
     nome_arquivo = sys.argv[1]
     lista_inicial_processos = carregar_processos_de_arquivo(nome_arquivo)
 
-    if lista_inicial_processos:
-        meu_escalonador = Scheduler()
-        for p in lista_inicial_processos:
-            meu_escalonador.adicionar_processo(p)
-        
-        print("--- ESTADO INICIAL ---")
-        # Este método será criado no próximo commit
+    
+        # ... (início do if __name__ == "__main__": que já existe)
+
+if lista_inicial_processos:
+    meu_escalonador = Scheduler()
+    for p in lista_inicial_processos:
+        meu_escalonador.adicionar_processo(p)
+
+    print("--- ESTADO INICIAL ---")
+    meu_escalonador.imprimir_estado_geral()
+    print("\n--- INICIANDO SIMULAÇÃO ---")
+
+    ciclo = 1+
+    while meu_escalonador.tem_processos_pendentes():
+        print(f"\n========= CICLO DE CPU #{ciclo} =========")
+        meu_escalonador.executarCicloDeCPU() # Vai chamar o método (ainda vazio)
         meu_escalonador.imprimir_estado_geral()
+        ciclo += 1
+        time.sleep(1)
+
+    print("\n\n--- SIMULAÇÃO CONCLUÍDA ---")
+    print("Todos os processos foram finalizados.")
