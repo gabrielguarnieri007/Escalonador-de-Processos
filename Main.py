@@ -7,7 +7,7 @@ def carregar_processos_de_arquivo(nome_arquivo: str) -> list[Processo]:
     processos = []
     try:
         with open(nome_arquivo, 'r') as f:
-            next(f) # Pula a primeira linha (cabeçalho)
+            next(f) 
             for linha in f:
                 if not linha.strip():
                     continue
@@ -32,7 +32,7 @@ if __name__ == "__main__":
     lista_inicial_processos = carregar_processos_de_arquivo(nome_arquivo)
 
     
-        # ... (início do if __name__ == "__main__": que já existe)
+        
 
 if lista_inicial_processos:
     meu_escalonador = Scheduler()
@@ -46,7 +46,7 @@ if lista_inicial_processos:
     ciclo = 1+
     while meu_escalonador.tem_processos_pendentes():
         print(f"\n========= CICLO DE CPU #{ciclo} =========")
-        meu_escalonador.executarCicloDeCPU() # Vai chamar o método (ainda vazio)
+        meu_escalonador.executarCicloDeCPU() 
         meu_escalonador.imprimir_estado_geral()
         ciclo += 1
         time.sleep(1)
