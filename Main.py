@@ -43,7 +43,7 @@ if lista_inicial_processos:
     meu_escalonador.imprimir_estado_geral()
     print("\n--- INICIANDO SIMULAÇÃO ---")
 
-    ciclo = 1+
+    ciclo = 1
     while meu_escalonador.tem_processos_pendentes():
         print(f"\n========= CICLO DE CPU #{ciclo} =========")
         meu_escalonador.executarCicloDeCPU() 
