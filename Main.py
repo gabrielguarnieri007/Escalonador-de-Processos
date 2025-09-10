@@ -1,3 +1,5 @@
+
+
 import sys
 import time
 from scheduler import Scheduler
@@ -7,7 +9,7 @@ def carregar_processos_de_arquivo(nome_arquivo: str) -> list[Processo]:
     processos = []
     try:
         with open(nome_arquivo, 'r') as f:
-            next(f) 
+            next(f)
             for linha in f:
                 if not linha.strip():
                     continue
@@ -21,8 +23,13 @@ def carregar_processos_de_arquivo(nome_arquivo: str) -> list[Processo]:
                 )
                 processos.append(p)
     except FileNotFoundError:
+        print(f"Erro: Arquivo '{nome_arquivo}' não encontrado.")
+        return None
+    except (ValueError, IndexError) as e:
+        print(f"Erro ao processar linha no arquivo: {linha.strip()} | Erro: {e}")
         return None
     return processos
+
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Uso: python Main.py <nome_do_arquivo_de_processos>")
@@ -31,25 +38,22 @@ if __name__ == "__main__":
     nome_arquivo = sys.argv[1]
     lista_inicial_processos = carregar_processos_de_arquivo(nome_arquivo)
 
-    
+    if lista_inicial_processos:
+        meu_escalonador = Scheduler()
+        for p in lista_inicial_processos:
+            meu_escalonador.adicionar_processo(p)
         
-
-if lista_inicial_processos:
-    meu_escalonador = Scheduler()
-    for p in lista_inicial_processos:
-        meu_escalonador.adicionar_processo(p)
-
-    print("--- ESTADO INICIAL ---")
-    meu_escalonador.imprimir_estado_geral()
-    print("\n--- INICIANDO SIMULAÇÃO ---")
-
-    ciclo = 1
-    while meu_escalonador.tem_processos_pendentes():
-        print(f"\n========= CICLO DE CPU #{ciclo} =========")
-        meu_escalonador.executarCicloDeCPU() 
+        print("--- ESTADO INICIAL ---")
         meu_escalonador.imprimir_estado_geral()
-        ciclo += 1
-        time.sleep(1)
+        print("\n--- INICIANDO SIMULAÇÃO ---")
+        
+        ciclo = 1
+        while meu_escalonador.tem_processos_pendentes():
+            print(f"\n========= CICLO DE CPU #{ciclo} =========")
+            meu_escalonador.executarCicloDeCPU()
+            meu_escalonador.imprimir_estado_geral()
+            ciclo += 1
+            time.sleep(1)
 
-    print("\n\n--- SIMULAÇÃO CONCLUÍDA ---")
-    print("Todos os processos foram finalizados.")
+        print("\n\n--- SIMULAÇÃO CONCLUÍDA ---")
+        print("Todos os processos foram finalizados.")
