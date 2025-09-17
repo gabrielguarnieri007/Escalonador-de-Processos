@@ -27,8 +27,8 @@ A principal regra do projeto é que nenhuma estrutura de dados pronta do Python 
 **2. Clone o repositório:**
 git clone [https://github.com/gabrielguarnieri007/Escalonador-de-Processos.git]
 
-**3. Navegue até a pasta do projeto:
+**3. Navegue até a pasta do projeto:**
 cd Escalonador-de-Processos
 
-**4. Execute o programa:
+**4. Execute o programa:**
 python Main.py processos.txt
